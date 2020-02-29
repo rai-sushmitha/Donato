@@ -1,0 +1,11 @@
+{% if all_donations %}	
+	<h3> Here are all your donations </h3>
+	<ul>
+		{% for donation in all_donations %}
+		<li><a href="/donator/{{donation.id}}/">{{donation.Title}}</a></li>
+		{% endfor %}
+	</ul>
+
+{% else %}
+	<h3>You dont't have any donations</h3>
+{% endif %}
