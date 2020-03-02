@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            
+            /* The Modal (background) */
+            #list{
+              background-color: lightgrey ;
+              font-size: 15px;
+              width: 700px;
+              height: 70px;
+              list-style-type: none;
+              border-radius: 10px;
+              padding-left: 10px;
+              margin: 5px;
+              vertical-align: left;
+              box-shadow: 0 2px 7px 0 rgba(0,0,0,0.2);
+            }
+            #list:hover{
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                background-color: grey;
+            }
+            #list1:hover{
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                background-color: grey;
+            }
+            #list1{
+                background-color: white;
+                list-style-type: none;
+                font-size: 15px;
+                width: 700px;
+                height: 50px;
+                border-style: groove;
+                border-bottom: 2px grey;
+                padding-left: 10px;
+            }
+            .modal {
+              display: none; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 0; /* Sit on top */
+              padding-top: 80px; /* Location of the box */
+              padding-left:150px;
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+            
+            /* Modal Content */
+            .modal-content {
+              
+              margin: auto;
+              padding: 10px;
+              padding-top: 1px;
+              border: 1px solid #888;
+              width: 60%;
+              height: 100%;
+
+            }
+            
+            /* The Close Button */
+            .close {
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+              padding-left: 95%;
+            }
+            
+            .close:hover,
+            .close:focus {
+              color: white;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            
+            
+            </style>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Welcome user_1</a>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">About</a><a class="dropdown-item" href="#">Notifications</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard</a
+                            >
+                           
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                NGO Requests
+                                <div class="sb-sidenav-collapse-arrow"></div
+                            ></a>
+                            
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
+                                        >Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                                    ></a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Login</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
+                                        >Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                                    ></a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">401 Page</a><a class="nav-link" href="404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            
+                            <a class="nav-link" href=""
+                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts</a
+                            >
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Welcome User1
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid" id ="container-fluid">
+                        <h1 class="mt-4">Dashboard</h1>
+                        
+                        <button id="myBtn1" style="background-color:dodgerblue;
+                    border-radius: 0 px;box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);font-size: 20px;
+                    height: 50px;width: 100px; font-size: x-large;position: absolute;left:900px;top: 25px;"
+                     >
+                    <div ><a href="#" class="btn"><font color="white"   >Donate</font></a></div></button>
+                     <div>
+                    <div >
+                      <ul>
+                          <li id="list" style="margin: 0 0 10px 0;"><p style="margin: 0;"><b>Kaushi's wedding</b></p><p>Food for wedding</p></li>
+                          <li id="list" style="margin: 0 0 10px 0;">Food for wedding</li>
+                          <li id="list" style="margin: 0 0 10px 0;">Food for wedding</li>
+                          <li id="list"style="margin: 0 0 10px 0;">Food for wedding</li>
+
+                      </ul>      
+                     </div>        
+                    </div>
+                    
+                    <div id="myModal" class="modal" >
+
+                        <!-- Modal content -->
+                        <div >
+                        <div class="modal-content" 
+                        >
+                         
+                          <div class="container-contact100"style="background-image: url(donation_form.png);" >
+                            <div class="wrap-contact100" >
+                                <form class="contact100-form validate-form">
+                                    <div style="background-color: black;">
+                                    <span class="contact100-form-title" style="padding-left:10px;background-color: black;">
+                                        <span class="close">&times;</span>
+                                       <center><font size="6" color="white" > Donation form</font></center>
+                                       
+                                    </span>
+                                    </div>
+                                   
+                                    
+                    
+                                    <div style="padding:10px">
+                                        <span class="label-input100"style="display: flex;
+                                        flex-direction: row;
+                                        justify-content: flex-start;
+                                        text-align: left;
+                                        font-weight :bolder;
+                                        width: 400px;
+                                        line-height: 26px;
+                                        margin-bottom: 10px;">What are you donating</span>
+                                        
+                                            <select class="selection-2" name="service">
+                                                <option>Choose Services</option>
+                                                <option>Food</option>
+                                                <option>Clothes</option>
+                                                <option>Books</option>
+                                                <option>Money</option>
+                                                <option>Others</option>
+                                            </select>
+                                        
+                                        <span class="focus-input100"></span>
+                                    </div>
+                    
+                                    <div style="padding:10px">
+                                        
+                                        <div>
+                                            <span class="label-input100"style="display: flex;
+                                            flex-direction: row;
+                                            justify-content: flex-start;
+                                            text-align: left;
+                                            font-weight :bolder;
+                                            width: 400px;
+                                            line-height: 26px;
+                                            margin-bottom: 10px;">Quantity</span>
+                                            <input class="input100" type="text" name="amount" >
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        
+                                    </div>
+                    
+                                    <div  data-validate = "Message is required"style="padding:10px">
+                                        <span class="label-input100"style="display: flex;
+                                        flex-direction: row;
+                                        justify-content: flex-start;
+                                        text-align: left;
+                                        font-weight :bolder;
+                                        width: 400px;
+                                        line-height: 26px;
+                                        margin-bottom: 10px;">Description</span>
+                                        <textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                    
+                                    <div class="container-contact100-form-btn"style="padding:10px">
+                                        <div class="wrap-contact100-form-btn">
+                                            <div class="contact100-form-bgbtn"></div>
+                                            <button class="contact100-form-btn">
+                                                <span style="font-weight: bolder;">
+                                                    Submit
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                      </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2019</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+       
+       
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn1");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+           
+            </script>
+    </body>
+</html>
